@@ -2,7 +2,12 @@
 # Default prefix: Ctrl+A
 set-option -g prefix C-a
 
+# Hidden variables
+%hidden tmux_dir="~/.tmux"
+%hidden tmux_config_dir="$tmux_dir/config"
+%hidden tmux_plugins_dir="$tmux_dir/plugins"
+
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-run '~/.tmux/plugins/tpm/tpm'
+run "$tmux_plugins_dir/tpm/tpm"
