@@ -1,0 +1,22 @@
+# vim:filetype=tmux
+# Set window and pane index to 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Titles
+set -g set-titles on
+set -g set-titles-string "#T"
+
+# Notification
+setw -g monitor-activity on
+
+# Window keymaps
+set -gw xterm-keys on
+bind -n C-Down new-window -c "#{pane_current_path}"
+bind -n C-Right next-window
+bind -n C-Left previous-window
+bind -n C-Up command-prompt "rename-window '%%'"
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+unbind '"'
+unbind %

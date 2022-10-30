@@ -1,0 +1,10 @@
+# vim:filetype=tmux
+# Friendly vim
+set -g mode-keys vi
+
+# Copy & paste
+bind Escape copy-mode
+unbind p
+bind -T copy-mode-vi 'v' send-keys -X begin-selection
+bind -T copy-mode-vi 'y' send-keys -X copy-pipe-and-cancel "xsel -i -p && xsel -o -p | xsel -i -b"
+bind p run "xsel -o | tmux load-buffer - ; tmux paste-buffer"

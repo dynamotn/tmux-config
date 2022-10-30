@@ -12,3 +12,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 run "$tmux_plugins_dir/tpm/tpm"
 run "$tmux_plugins_dir/dymux/theme.mux"
+
+# Load configurations
+source "$tmux_config_dir/base"
+source "$tmux_config_dir/window"
