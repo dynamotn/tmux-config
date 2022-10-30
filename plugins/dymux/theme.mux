@@ -1,0 +1,123 @@
+#!/bin/bash
+# vim:filetype=sh
+DISTRO=
+
+_tmux_get() {
+  local value
+  value="$(tmux show -gqv "$1")"
+  [ "$value" != "" ] && echo "$value" || echo "$2"
+}
+
+_tmux_set() {
+  tmux set-option -gq "$1" "$2"
+}
+
+_detect_distro() {
+  grep -qis "$1" /etc/os-release && DISTRO=$1
+}
+
+_get_distro() {
+  _detect_distro "Gentoo" && return
+  _detect_distro "Arch Linux" && return
+  _detect_distro "Ubuntu" && return
+}
+
+# Options
+right_solid_icon=$(_tmux_get '@dymux_right_solid_icon' '')
+right_chevron_icon=$(_tmux_get '@dymux_right_chevron_icon' '')
+left_solid_icon=$(_tmux_get '@dymux_left_solid_icon' '')
+session_icon="$(_tmux_get '@dymux_session_icon' '')"
+user_icon="$(_tmux_get '@dymux_user_icon' '')"
+time_icon="$(_tmux_get '@dymux_time_icon' '')"
+show_uptime="$(_tmux_get @dymux_show_uptime true)"
+time_format=$(_tmux_get @dymux_time_format '%H:%M')
+
+# Set host color
+_get_distro
+case $DISTRO in
+  'Gentoo')
+    HC='#846bcc'
+    ;;
+  'ArchLinux')
+    HC='#2196f3'
+    ;;
+  'Ubuntu')
+    HC='#fd6835'
+    ;;
+  *)
+    HC=$(printf "#%02x%02x%02x\n" $((RANDOM % 256)) $((RANDOM % 256)) $((RANDOM % 256)))
+    ;;
+esac
+
+C01=#fafafa
+C02=#212121
+C03=#e1f5fe
+C04=#006064
+C05=#311b92
+C06=#ede7f6
+C07=#bf360c
+C08=#424242
+C09=#00c853
+C10=#757575
+C11=#0091ea
+
+FG="$C01"
+BG="$C02"
+
+# Status options
+_tmux_set status-interval 1
+_tmux_set status on
+
+# Basic status bar colors
+_tmux_set status-fg "$FG"
+_tmux_set status-bg "$BG"
+_tmux_set status-attr none
+
+# Left side of status bar
+_tmux_set status-left-length 120
+user=$(whoami)
+LS="#[fg=$C03,bg=$HC,bold] $user_icon $user@#h #[fg=$HC,bg=$C04,nobold]$right_solid_icon#[fg=$FG,bg=$C04] $session_icon #S "
+if "$show_uptime"; then
+  LS="$LS#[fg=$C04,bg=$C05]$right_solid_icon#[fg=$C06,bg=$C05] Uptime: #(uptime | awk -F'[a-z]: ' '{print \$2}') #[fg=$C05,bg=$BG]$right_solid_icon"
+else
+  LS="$LS#[fg=$C04,bg=$BG]$right_solid_icon"
+fi
+_tmux_set status-left "$LS"
+
+# Right side of status bar
+_tmux_set status-right-length 120
+RS="#[fg=$C07,bg=$BG]$left_solid_icon#[fg=$FG,bg=$C07] $time_icon $time_format"
+_tmux_set status-right "$RS"
+
+# Window status
+_tmux_set window-status-format "#{?window_start_flag,#{?window_activity_flag,#[fg=$C08 bg=$BG],#[fg=$BG bg=$C08]}$right_solid_icon,}#{?window_activity_flag,#[fg=$C09]#[bg=$C08]$right_solid_icon#[bg=$FG],#[bg=$BG]#[fg=$C08]$right_solid_icon#[fg=$C10]} #I $right_chevron_icon #W #{?window_activity_flag,#[fg=$C08 bg=$C09],#[fg=$BG bg=$C08]}$right_solid_icon#{?window_end_flag,#{?window_activity_flag,#[fg=$BG bg=$C08],#[fg=$C08 bg=$BG]}$right_solid_icon,}"
+_tmux_set window-status-current-format "#{?window_start_flag,#[fg=$BG bg=$C08]$right_solid_icon,}#[fg=$C08,bg=$C11]$right_solid_icon#[fg=$FG,bg=$C11] #I  #W #[fg=$C11 bg=$C08]$right_solid_icon#{?window_end_flag,#[fg=$C08 bg=$BG]$right_solid_icon,}"
+
+# Window separator
+_tmux_set window-status-separator ""
+
+# Window status alignment
+_tmux_set status-justify centre
+
+# Pane border
+_tmux_set pane-border-style "fg=$C08,bg=default"
+
+# Active pane border
+_tmux_set pane-active-border-style "fg=$HC,bg=$BG"
+
+# Pane number indicator
+_tmux_set display-panes-colour "$C08"
+_tmux_set display-panes-active-colour "$HC"
+
+# Clock mode
+_tmux_set clock-mode-colour "$HC"
+_tmux_set clock-mode-style 24
+
+# Message
+_tmux_set message-style "fg=$HC,bg=$BG"
+
+# Command message
+_tmux_set message-command-style "fg=$HC,bg=$BG"
+
+# Copy mode highlight
+_tmux_set mode-style "bg=$HC,fg=$FG"
