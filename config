@@ -1,3 +1,7 @@
 # vim:filetype=tmux
 # Default prefix: Ctrl+A
 set-option -g prefix C-a
+
+# Plugins
+set -g @plugin 'tmux-plugins/tpm'
+run '~/.tmux/plugins/tpm/tpm'
