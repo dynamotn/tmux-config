@@ -38,7 +38,7 @@ case $DISTRO in
   'Gentoo')
     HC='#846bcc'
     ;;
-  'ArchLinux')
+  'Arch Linux')
     HC='#2196f3'
     ;;
   'Ubuntu')
