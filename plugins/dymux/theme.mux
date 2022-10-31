@@ -30,6 +30,7 @@ session_icon="$(_tmux_get '@dymux_session_icon' '')"
 user_icon="$(_tmux_get '@dymux_user_icon' '')"
 time_icon="$(_tmux_get '@dymux_time_icon' '')"
 show_uptime="$(_tmux_get @dymux_show_uptime true)"
+show_pomodoro="$(_tmux_get @dymux_show_pomodoro true)"
 time_format=$(_tmux_get @dymux_time_format '%H:%M')
 
 # Set host color
@@ -86,7 +87,10 @@ _tmux_set status-left "$LS"
 
 # Right side of status bar
 _tmux_set status-right-length 120
-RS="#[fg=$C07,bg=$BG]$left_solid_icon#[fg=$FG,bg=$C07] $time_icon $time_format"
+RS="#[fg=$C07]$left_solid_icon#[fg=$FG,bg=$C07] $time_icon $time_format"
+if "$show_pomodoro"; then
+  RS="#[fg=$C10]$left_solid_icon#[fg=$FG,bg=$C10]#{pomodoro_status}$RS"
+fi
 _tmux_set status-right "$RS"
 
 # Window status

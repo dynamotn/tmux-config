@@ -15,8 +15,9 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-yank'
-run "$tmux_plugins_dir/tpm/tpm"
+set -g @plugin 'olimorris/tmux-pomodoro-plus'
 run "$tmux_plugins_dir/dymux/theme.mux"
+run "$tmux_plugins_dir/tpm/tpm"
 
 # Load configurations
 source "$tmux_config_dir/base"
