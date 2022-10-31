@@ -95,7 +95,7 @@ _tmux_set status-right "$RS"
 
 # Window status
 _tmux_set window-status-format "#{?window_start_flag,#{?window_activity_flag,#[fg=$C08 bg=$BG],#[fg=$BG bg=$C08]}$right_solid_icon,}#{?window_activity_flag,#[fg=$C09]#[bg=$C08]$right_solid_icon#[bg=$FG],#[bg=$BG]#[fg=$C08]$right_solid_icon#[fg=$C10]} #I $right_chevron_icon #W #{?window_activity_flag,#[fg=$C08 bg=$C09],#[fg=$BG bg=$C08]}$right_solid_icon#{?window_end_flag,#{?window_activity_flag,#[fg=$BG bg=$C08],#[fg=$C08 bg=$BG]}$right_solid_icon,}"
-_tmux_set window-status-current-format "#{?window_start_flag,#[fg=$BG bg=$C08]$right_solid_icon,}#[fg=$C08,bg=$C11]$right_solid_icon#[fg=$FG,bg=$C11] #I  #W #[fg=$C11 bg=$C08]$right_solid_icon#{?window_end_flag,#[fg=$C08 bg=$BG]$right_solid_icon,}"
+_tmux_set window-status-current-format "#{?window_start_flag,#[fg=$BG bg=$C08]$right_solid_icon,}#[fg=$C08,bg=$HC]$right_solid_icon#[fg=$FG,bg=$HC] #I  #W #[fg=$HC bg=$C08]$right_solid_icon#{?window_end_flag,#[fg=$C08 bg=$BG]$right_solid_icon,}"
 
 # Window separator
 _tmux_set window-status-separator ""
