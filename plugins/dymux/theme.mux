@@ -78,7 +78,7 @@ _tmux_set status-left-length 120
 user=$(whoami)
 LS="#[fg=$C03,bg=$HC,bold] $user_icon $user@#h #[fg=$HC,bg=$C04,nobold]$right_solid_icon#[fg=$FG,bg=$C04] $session_icon #S "
 if "$show_uptime"; then
-  LS="$LS#[fg=$C04,bg=$C05]$right_solid_icon#[fg=$C06,bg=$C05] Uptime: #(uptime | awk -F'[a-z]: ' '{print \$2}') #[fg=$C05,bg=$BG]$right_solid_icon"
+  LS="$LS#[fg=$C04,bg=$C05]$right_solid_icon#[fg=$C06,bg=$C05] Uptime: #(uptime | rev | cut -d":" -f1 | rev | sed s/,//g) #[fg=$C05,bg=$BG]$right_solid_icon"
 else
   LS="$LS#[fg=$C04,bg=$BG]$right_solid_icon"
 fi
