@@ -15,8 +15,9 @@ set -gw xterm-keys on
 bind -n C-Down new-window -c "#{pane_current_path}"
 bind -n C-Right next-window
 bind -n C-Left previous-window
-bind -n C-Up command-prompt "rename-window '%%'"
+bind -n C-Up command-prompt -p "Rename window to:" "rename-window '%%'"
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
 unbind '"'
 unbind %
