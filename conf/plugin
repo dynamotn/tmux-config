@@ -2,3 +2,6 @@
 # continuum
 set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
+
+# extracto
+set -g @extrakto_clip_tool 'xsel -i -b'
