@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -f ~/Dotfiles/.envrc ]; then
+  source ~/Dotfiles/.envrc
+
+  if [ "$DYNAMO_DOTFILES_USING_PLACE" = "home_pc" ]; then
+    tmux set-option -g prefix C-a
+  elif [ "$DYNAMO_DOTFILES_USING_PLACE" = "home_tablet" ]; then
+    tmux set-option -g prefix C-s
+  elif [ "$DYNAMO_DOTFILES_USING_PLACE" = "office_pc" ]; then
+    tmux set-option -g prefix C-s
+    tmux set-option -g prefix2 C-b
+  fi
+fi
