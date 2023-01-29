@@ -37,30 +37,28 @@ time_format=$(_tmux_get @dymux_time_format '%H:%M')
 _get_distro
 case $DISTRO in
   'Gentoo')
-    HC='#846bcc'
+    HC='#c6a0f6'
     ;;
   'Arch Linux')
-    HC='#2196f3'
+    HC='#8aadf4'
     ;;
   'Ubuntu')
-    HC='#fd6835'
+    HC='#f5a97f'
     ;;
   *)
     HC=$(printf "#%02x%02x%02x\n" $((RANDOM % 256)) $((RANDOM % 256)) $((RANDOM % 256)))
     ;;
 esac
 
-C01=#fafafa
-C02=#212121
-C03=#e1f5fe
-C04=#006064
-C05=#311b92
-C06=#ede7f6
-C07=#bf360c
-C08=#424242
-C09=#00c853
-C10=#757575
-C11=#0091ea
+C01=#cad3f5
+C02=#24273a
+C03=#8bd5ca
+C04=#b7bdf8
+C05=#ed8796
+C06=#a5adcb
+C07=#181926
+C08=#a6da95
+C09=#5b6078
 
 FG="$C01"
 BG="$C02"
@@ -77,25 +75,25 @@ _tmux_set status-attr none
 # Left side of status bar
 _tmux_set status-left-length 120
 user=$(whoami)
-LS="#[fg=$C03,bg=$HC,bold] $user_icon $user@#h #[fg=$HC,bg=$C04,nobold]$right_solid_icon#[fg=$FG,bg=$C04] $session_icon #S "
+LS="#[fg=$BG,bg=$HC,bold] $user_icon $user@#h #[fg=$HC,bg=$C03,nobold]$right_solid_icon#[fg=$BG,bg=$C03] $session_icon #S "
 if "$show_uptime"; then
-  LS="$LS#[fg=$C04,bg=$C05]$right_solid_icon#[fg=$C06,bg=$C05] Uptime: #(uptime | rev | cut -d":" -f1 | rev | sed s/,//g) #[fg=$C05,bg=$BG]$right_solid_icon"
+  LS="$LS#[fg=$C03,bg=$C04]$right_solid_icon#[fg=$BG,bg=$C04] Uptime: #(uptime | rev | cut -d':' -f1 | rev | sed s/,//g) #[fg=$C04,bg=$BG]$right_solid_icon"
 else
-  LS="$LS#[fg=$C04,bg=$BG]$right_solid_icon"
+  LS="$LS#[fg=$C03,bg=$BG]$right_solid_icon"
 fi
 _tmux_set status-left "$LS"
 
 # Right side of status bar
 _tmux_set status-right-length 120
-RS="#[fg=$C07]$left_solid_icon#[fg=$FG,bg=$C07] $time_icon $time_format"
+RS="#[fg=$C05]$left_solid_icon#[fg=$BG,bg=$C05] $time_icon $time_format"
 if "$show_pomodoro"; then
-  RS="#[fg=$C10]$left_solid_icon#[fg=$FG,bg=$C10]#{pomodoro_status}$RS"
+  RS="#[fg=$C09]$left_solid_icon#[fg=$FG,bg=$C09]#{pomodoro_status}$RS"
 fi
 _tmux_set status-right "$RS"
 
 # Window status
-_tmux_set window-status-format "#{?window_start_flag,#{?window_activity_flag,#[fg=$C08 bg=$BG],#[fg=$BG bg=$C08]}$right_solid_icon,}#{?window_activity_flag,#[fg=$C09]#[bg=$C08]$right_solid_icon#[bg=$FG],#[bg=$BG]#[fg=$C08]$right_solid_icon#[fg=$C10]} #I $right_chevron_icon #W #{?window_activity_flag,#[fg=$C08 bg=$C09],#[fg=$BG bg=$C08]}$right_solid_icon#{?window_end_flag,#{?window_activity_flag,#[fg=$BG bg=$C08],#[fg=$C08 bg=$BG]}$right_solid_icon,}"
-_tmux_set window-status-current-format "#{?window_start_flag,#[fg=$BG bg=$C08]$right_solid_icon,}#[fg=$C08,bg=$HC]$right_solid_icon#[fg=$FG,bg=$HC] #I  #W #[fg=$HC bg=$C08]$right_solid_icon#{?window_end_flag,#[fg=$C08 bg=$BG]$right_solid_icon,}"
+_tmux_set window-status-format "#{?window_start_flag,#{?window_activity_flag,#[fg=$C07 bg=$BG],#[fg=$BG bg=$C07]}$right_solid_icon,}#{?window_activity_flag,#[fg=$C08]#[bg=$C07]$right_solid_icon#[bg=$BG],#[bg=$BG]#[fg=$C07]$right_solid_icon#[fg=$C06]} #I $right_chevron_icon #W #{?window_activity_flag,#[fg=$C07 bg=$C08],#[fg=$BG bg=$C07]}$right_solid_icon#{?window_end_flag,#{?window_activity_flag,#[fg=$BG bg=$C07],#[fg=$C07 bg=$BG]}$right_solid_icon,}"
+_tmux_set window-status-current-format "#{?window_start_flag,#[fg=$BG bg=$C07]$right_solid_icon,}#[fg=$C07,bg=$HC]$right_solid_icon#[fg=$BG,bg=$HC] #I  #W #[fg=$HC bg=$C07]$right_solid_icon#{?window_end_flag,#[fg=$C07 bg=$BG]$right_solid_icon,}"
 
 # Window separator
 _tmux_set window-status-separator ""
@@ -104,13 +102,13 @@ _tmux_set window-status-separator ""
 _tmux_set status-justify centre
 
 # Pane border
-_tmux_set pane-border-style "fg=$C08,bg=default"
+_tmux_set pane-border-style "fg=$C07,bg=default"
 
 # Active pane border
 _tmux_set pane-active-border-style "fg=$HC,bg=$BG"
 
 # Pane number indicator
-_tmux_set display-panes-colour "$C08"
+_tmux_set display-panes-colour "$C07"
 _tmux_set display-panes-active-colour "$HC"
 
 # Clock mode
