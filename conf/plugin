@@ -1,0 +1,4 @@
+# vim:filetype=tmux
+# continuum
+set -g @continuum-boot 'on'
+set -g @continuum-restore 'on'
