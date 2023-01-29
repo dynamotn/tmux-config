@@ -1,7 +1,6 @@
 # vim:filetype=tmux
-# Set window and pane index to 1
+# Set window index to 1
 set -g base-index 1
-setw -g pane-base-index 1
 
 # Titles
 set -g set-titles on

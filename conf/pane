@@ -1,0 +1,10 @@
+# vim:filetype=tmux
+# Set pane index to 1
+setw -g pane-base-index 1
+
+# Pane keymaps
+bind -T copy-mode-vi S-Left select-pane -L
+bind -T copy-mode-vi S-Down select-pane -D
+bind -T copy-mode-vi S-Up select-pane -U
+bind -T copy-mode-vi S-Right select-pane -R
+bind -T copy-mode-vi C-\\ select-pane -l

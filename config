@@ -18,8 +18,10 @@ set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'olimorris/tmux-pomodoro-plus'
 set -g @plugin 'schasse/tmux-jump'
 run "$tmux_plugins_dir/dymux/theme.mux"
+run "$tmux_plugins_dir/dymux/vim.mux"
 run "$tmux_plugins_dir/tpm/tpm"
 
 # Load configurations
 source "$tmux_config_dir/base"
 source "$tmux_config_dir/window"
+source "$tmux_config_dir/pane"
