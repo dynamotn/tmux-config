@@ -8,18 +8,18 @@ set-option -g prefix C-b
 %hidden tmux_plugins_dir="$tmux_dir/plugins"
 
 # Plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'laktak/extrakto'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @plugin 'tmux-plugins/tmux-copycat'
-set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'olimorris/tmux-pomodoro-plus'
-set -g @plugin 'schasse/tmux-jump'
-run "$tmux_plugins_dir/dymux/theme.mux"
-run "$tmux_plugins_dir/dymux/vim.mux"
-run "$tmux_plugins_dir/dymux/prefix.mux"
+set -g @plugin 'tmux-plugins/tpm' # Plugins manager
+set -g @plugin 'tmux-plugins/tmux-sensible' # Community boilerplate config
+set -g @plugin 'laktak/extrakto' # Fuzzy search text and copy to clipboard or set to command line
+set -g @plugin 'tmux-plugins/tmux-resurrect' # Save and restore tmux environment after restart
+set -g @plugin 'tmux-plugins/tmux-continuum' # Continuous saving and automatic restore
+set -g @plugin 'tmux-plugins/tmux-copycat' # Enhance searching
+set -h @plugin 'tmux-plugins/tmux-yank' # Yank text to clipboard by select
+set -g @plugin 'olimorris/tmux-pomodoro-plus' # Pomodoro clock
+set -g @plugin 'schasse/tmux-jump' # Easymotion navigation
+run "$tmux_plugins_dir/dymux/theme.mux" # Theme
+run "$tmux_plugins_dir/dymux/vim.mux" # Combine with vim/neovim
+run "$tmux_plugins_dir/dymux/prefix.mux" # Custom prefix for each environment
 run "$tmux_plugins_dir/tpm/tpm"
 
 # Load configurations
