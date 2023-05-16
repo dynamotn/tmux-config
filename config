@@ -3,7 +3,7 @@
 set-option -g prefix C-b
 
 # Hidden variables
-%hidden tmux_dir="~/.tmux"
+%hidden tmux_dir="~/.config/tmux"
 %hidden tmux_config_dir="$tmux_dir/conf"
 %hidden tmux_plugins_dir="$tmux_dir/plugins"
 

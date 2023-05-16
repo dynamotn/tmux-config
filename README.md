@@ -31,11 +31,11 @@ Requirements
 Installation
 ============
 
-Clone this repository to `~/.tmux`, and link config file to `~/.tmux.conf`
+Clone this repository to `~/.config/tmux`, and link config file to `~/.tmux.conf`
 ```bash
-rm -rf ~/.tmux
-git clone https://gitlab.com/dynamo-config/tmux ~/.tmux
-ln -sf ~/.tmux/config ~/.tmux.conf
+rm -rf ~/.config/tmux
+git clone https://gitlab.com/dynamo-config/tmux ~/.config/tmux
+ln -sf ~/.config/tmux/config ~/.tmux.conf
 ```
 
 After that, run setup script
