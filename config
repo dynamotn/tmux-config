@@ -14,7 +14,7 @@ set -g @plugin 'laktak/extrakto' # Fuzzy search text and copy to clipboard or se
 set -g @plugin 'tmux-plugins/tmux-resurrect' # Save and restore tmux environment after restart
 set -g @plugin 'tmux-plugins/tmux-continuum' # Continuous saving and automatic restore
 set -g @plugin 'tmux-plugins/tmux-copycat' # Enhance searching
-set -h @plugin 'tmux-plugins/tmux-yank' # Yank text to clipboard by select
+set -g @plugin 'tmux-plugins/tmux-yank' # Yank text to clipboard by select
 set -g @plugin 'olimorris/tmux-pomodoro-plus' # Pomodoro clock
 set -g @plugin 'schasse/tmux-jump' # Easymotion navigation
 run "$tmux_plugins_dir/dymux/theme.mux" # Theme
