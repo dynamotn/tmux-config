@@ -38,11 +38,6 @@ git clone https://gitlab.com/dynamo-config/tmux ~/.config/tmux
 ln -sf ~/.config/tmux/config ~/.tmux.conf
 ```
 
-After that, run setup script
-```bash
-bash ~/.tmux/setup.sh
-```
-
 Keybindings
 ===========
 - On my PC at home: `prefix` is `Ctrl-a`

@@ -5,7 +5,7 @@ set-option -g prefix C-b
 # Hidden variables
 %hidden tmux_dir="~/.config/tmux"
 %hidden tmux_config_dir="$tmux_dir/conf"
-%hidden tmux_plugins_dir="$tmux_dir/plugins"
+%hidden tmux_plugins_dir="~/.local/share/tmux/plugins"
 
 # Plugins
 set -g @plugin 'tmux-plugins/tpm' # Plugins manager
@@ -17,10 +17,15 @@ set -g @plugin 'tmux-plugins/tmux-copycat' # Enhance searching
 set -g @plugin 'tmux-plugins/tmux-yank' # Yank text to clipboard by select
 set -g @plugin 'olimorris/tmux-pomodoro-plus' # Pomodoro clock
 set -g @plugin 'schasse/tmux-jump' # Easymotion navigation
-run "$tmux_plugins_dir/dymux/theme.mux" # Theme
-run "$tmux_plugins_dir/dymux/vim.mux" # Combine with vim/neovim
-run "$tmux_plugins_dir/dymux/prefix.mux" # Custom prefix for each environment
-run "$tmux_plugins_dir/tpm/tpm"
+run-shell "$tmux_dir/plugins/dymux/theme.mux" # Theme
+run-shell "$tmux_dir/plugins/dymux/vim.mux" # Combine with vim/neovim
+run-shell "$tmux_dir/plugins/dymux/prefix.mux" # Custom prefix for each environment
+
+set-environment -g TMUX_PLUGIN_MANAGER_PATH "$tmux_plugins_dir/"
+if-shell "test ! -d $tmux_plugins_dir/tpm" \
+  "run-shell 'git clone https://github.com/tmux-plugins/tpm $tmux_plugins_dir/tpm && $tmux_plugins_dir/tpm/bin/install_plugins'"
+
+run-shell "$tmux_plugins_dir/tpm/tpm"
 
 # Load configurations
 source "$tmux_config_dir/base"
