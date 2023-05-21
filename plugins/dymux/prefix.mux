@@ -1,14 +1,34 @@
 #!/bin/bash
 
-if [ -f ~/Dotfiles/.envrc ]; then
-  source ~/Dotfiles/.envrc
+kind=$(awk '
+$1 ~ /^\[\[?[[:alnum:]]*\]\]?$/{
+    if ($1=="[data]") {data=1}
+    else {data=0}
+}
+data==1 &&
+sub(/^[[:space:]]*kind[[:space:]]*=[[:space:]]*/, "") {
+    sub(/^"/, ""); sub(/".*$/, "")
+    print
+}' ~/.config/chezmoi/chezmoi.toml)
 
-  if [ "$DYNAMO_DOTFILES_USING_PLACE" = "home_pc" ]; then
-    tmux set-option -g prefix C-a
-  elif [ "$DYNAMO_DOTFILES_USING_PLACE" = "home_tablet" ]; then
-    tmux set-option -g prefix C-s
-  elif [ "$DYNAMO_DOTFILES_USING_PLACE" = "office_pc" ]; then
-    tmux set-option -g prefix C-s
-    tmux set-option -g prefix2 C-b
-  fi
+place=$(awk '
+$1 ~ /^\[\[?[[:alnum:]]*\]\]?$/{
+    if ($1=="[data]") {data=1}
+    else {data=0}
+}
+data==1 &&
+sub(/^[[:space:]]*place[[:space:]]*=[[:space:]]*/, "") {
+    sub(/^"/, ""); sub(/".*$/, "")
+    print
+}' ~/.config/chezmoi/chezmoi.toml)
+
+dotfiles_place_and_kind="$place"_"$kind"
+
+if [ "$dotfiles_place_and_kind" = "home_pc" ]; then
+  tmux set-option -g prefix C-a
+elif [ "$dotfiles_place_and_kind" = "home_tablet" ]; then
+  tmux set-option -g prefix C-x
+elif [ "$dotfiles_place_and_kind" = "office_pc" ]; then
+  tmux set-option -g prefix C-s
+  tmux set-option -g prefix2 C-b
 fi
