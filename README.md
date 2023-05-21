@@ -41,7 +41,7 @@ ln -sf ~/.config/tmux/config ~/.tmux.conf
 Keybindings
 ===========
 - On my PC at home: `prefix` is `Ctrl-a`
-- On my tablet: `prefix` is `Ctrl-s`
+- On my tablet: `prefix` is `Ctrl-x`
 - On my PC at office: `prefix` is either `Ctrl-s` or `Ctrl-b`
 - Otherwise: `prefix` is `Ctrl-b`
 
