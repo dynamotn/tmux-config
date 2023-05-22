@@ -30,5 +30,4 @@ elif [ "$dotfiles_place_and_kind" = "home_tablet" ]; then
   tmux set-option -g prefix C-x
 elif [ "$dotfiles_place_and_kind" = "office_pc" ]; then
   tmux set-option -g prefix C-s
-  tmux set-option -g prefix2 C-b
 fi

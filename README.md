@@ -42,7 +42,7 @@ Keybindings
 ===========
 - On my PC at home: `prefix` is `Ctrl-a`
 - On my tablet: `prefix` is `Ctrl-x`
-- On my PC at office: `prefix` is either `Ctrl-s` or `Ctrl-b`
+- On my PC at office: `prefix` is `Ctrl-s`
 - Otherwise: `prefix` is `Ctrl-b`
 
 I use `vi` mode keys for tmux.
