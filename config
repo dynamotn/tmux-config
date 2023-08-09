@@ -29,6 +29,7 @@ run-shell "$tmux_plugins_dir/tpm/tpm"
 
 # Load configurations
 source "$tmux_config_dir/base"
+source "$tmux_config_dir/terminal"
 source "$tmux_config_dir/window"
 source "$tmux_config_dir/pane"
 source "$tmux_config_dir/plugin"
