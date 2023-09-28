@@ -1,26 +1,8 @@
 #!/bin/bash
 
-kind=$(awk '
-$1 ~ /^\[\[?[[:alnum:]]*\]\]?$/{
-    if ($1=="[data]") {data=1}
-    else {data=0}
-}
-data==1 &&
-sub(/^[[:space:]]*kind[[:space:]]*=[[:space:]]*/, "") {
-    sub(/^"/, ""); sub(/".*$/, "")
-    print
-}' ~/.config/chezmoi/chezmoi.toml)
+kind=$(yq e '.data.kind' ~/.config/chezmoi/chezmoi.yaml)
 
-place=$(awk '
-$1 ~ /^\[\[?[[:alnum:]]*\]\]?$/{
-    if ($1=="[data]") {data=1}
-    else {data=0}
-}
-data==1 &&
-sub(/^[[:space:]]*place[[:space:]]*=[[:space:]]*/, "") {
-    sub(/^"/, ""); sub(/".*$/, "")
-    print
-}' ~/.config/chezmoi/chezmoi.toml)
+place=$(yq e '.data.place' ~/.config/chezmoi/chezmoi.yaml)
 
 dotfiles_place_and_kind="$place"_"$kind"
 
