@@ -1,6 +1,6 @@
 # vim:filetype=tmux
-# 256 colors
-set -as terminal-overrides ',*:Tc'
+# True colors
+set -ag terminal-overrides ',*:RGB'
 
 # Update env
 set -g update-environment "DISPLAY WAYLAND_DISPLAY"
