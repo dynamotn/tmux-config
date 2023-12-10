@@ -80,7 +80,7 @@ Here is some keybindings that I changed versus tmux default configuration:
 License
 ========
 
-Copyright © 2019 Tran Duc Nam <dynamo.foss@gmail.com>
+Copyright © 2019 Tran Duc Nam <me@dynamotn.dev>
 
 The project is licensed under GPLv3.
 You can read it online at [here](https://choosealicense.com/licenses/gpl-3.0/).
